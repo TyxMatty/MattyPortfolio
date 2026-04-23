@@ -1,0 +1,1 @@
+This is my first solo in-depth full stack development experience, even though I had worked beforehand in more complex systems, my preferred Back-End language was TS, and front-end stylization langs were HTML/CSS
