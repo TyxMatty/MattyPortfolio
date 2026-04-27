@@ -93,13 +93,9 @@ if (langBtn) {
 setLanguage(currentLang);
 // @ts-ignore
 const contactForm = document.getElementById('contact-form');
-
-
-
 // =====================
 // EMAIL JS INTEGRATION
 // =====================
-
 // @ts-ignore
 emailjs.init("u7iQzLsxAErz6ZGTw");
 if (contactForm) {
@@ -142,7 +138,6 @@ if (contactForm) {
         });
     });
 }
-
 // =============================
 // SCROLL & PROGRESS BAR EFFECTS
 // =============================
