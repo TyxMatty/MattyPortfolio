@@ -22,8 +22,8 @@ const translations = {
     // About
     "about-title": { en: "About Me", pt: "Sobre Mim" },
     "about-bio1": {
-        en: "Hello! I'm <strong>Mateus Valenga</strong>, also known as <strong>Matty</strong>. I'm a 17-year-old Software Engineering student with a passion for software development, web development and game creation. I'm currently based in Brazil, and I'm eager to connect with like-minded individuals and explore exciting opportunities in the tech world.",
-        pt: "Olá! Eu sou <strong>Mateus Valenga</strong>, também conhecido como <strong>Matty</strong>. Tenho 17 anos, sou estudante de Engenharia de Software e apaixonado por desenvolvimento de sistemas, web e criação de jogos. Atualmente resido no Brasil e estou ansioso para me conectar com pessoas da área e explorar novas oportunidades no mundo da tecnologia."
+        en: "Hello! I'm <strong>Mateus Valenga</strong>, also known as <strong>Matty</strong>. I'm a 18-year-old Software Engineering student with a passion for software development, web development and game creation. I'm currently based in Brazil, and I'm eager to connect with like-minded individuals and explore exciting opportunities in the tech world.",
+        pt: "Olá! Eu sou <strong>Mateus Valenga</strong>, também conhecido como <strong>Matty</strong>. Tenho 18 anos, sou estudante de Engenharia de Software e apaixonado por desenvolvimento de sistemas, web e criação de jogos. Atualmente resido no Brasil e estou ansioso para me conectar com pessoas da área e explorar novas oportunidades no mundo da tecnologia."
     },
     "about-bio2": {
         en: "My core focus lies in <strong>Software Engineering</strong>, <strong>C/C++</strong> and <strong>Full Stack Web Development</strong>, alongside crafting immersive experiences as a <strong>Game Developer</strong>, specializing in <strong>lua, luau and C#</strong>. Currently, I'm expanding my Full Stack Web Development skills to bring robust backends and clean frontends to life and working on my app development abilities, whilst improving my overall technical capabilities - which include consulting skills and project management,",
