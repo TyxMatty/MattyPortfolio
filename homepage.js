@@ -1,7 +1,4 @@
 "use strict";
-// ==========================================
-// MÓDULO DE INTERNACIONALIZAÇÃO (i18n)
-// ==========================================
 const translations = {
     // Header & Hero
     "header-desc": {
@@ -22,8 +19,8 @@ const translations = {
     // About
     "about-title": { en: "About Me", pt: "Sobre Mim" },
     "about-bio1": {
-        en: "Hello! I'm <strong>Mateus Valenga</strong>, also known as <strong>Matty</strong>. I'm a 17-year-old Software Engineering student with a passion for software development, web development and game creation. I'm currently based in Brazil, and I'm eager to connect with like-minded individuals and explore exciting opportunities in the tech world.",
-        pt: "Olá! Eu sou <strong>Mateus Valenga</strong>, também conhecido como <strong>Matty</strong>. Tenho 17 anos, sou estudante de Engenharia de Software e apaixonado por desenvolvimento de sistemas, web e criação de jogos. Atualmente resido no Brasil e estou ansioso para me conectar com pessoas da área e explorar novas oportunidades no mundo da tecnologia."
+        en: "Hello! I'm <strong>Mateus Valenga</strong>, also known as <strong>Matty</strong>. I'm a 18-year-old Software Engineering student with a passion for software development, web development and game creation. I'm currently based in Brazil, and I'm eager to connect with like-minded individuals and explore exciting opportunities in the tech world.",
+        pt: "Olá! Eu sou <strong>Mateus Valenga</strong>, também conhecido como <strong>Matty</strong>. Tenho 18 anos, sou estudante de Engenharia de Software e apaixonado por desenvolvimento de sistemas, web e criação de jogos. Atualmente resido no Brasil e estou ansioso para me conectar com pessoas da área e explorar novas oportunidades no mundo da tecnologia."
     },
     "about-bio2": {
         en: "My core focus lies in <strong>Software Engineering</strong>, <strong>C/C++</strong> and <strong>Full Stack Web Development</strong>, alongside crafting immersive experiences as a <strong>Game Developer</strong>, specializing in <strong>lua, luau and C#</strong>. Currently, I'm expanding my Full Stack Web Development skills to bring robust backends and clean frontends to life and working on my app development abilities, whilst improving my overall technical capabilities - which include consulting skills and project management,",
@@ -51,6 +48,19 @@ const translations = {
     "projects-roblox-title": { en: "Roblox Game Development", pt: "Desenvolvimento de Jogos no Roblox" },
     "projects-roblox-description1": { en: "Since 2019, I've been developing games on the <strong>Roblox</strong> platform, utilizing <strong>Lua</strong> and <strong>Luau</strong>. What started as a passion for creating immersive experiences evolved into a deep dive into Software Engineering.", pt: "Desde 2019 desenvolvo jogos na plataforma <strong>Roblox</strong> utilizando <strong>Lua</strong> e <strong>Luau</strong>. O que começou como uma paixão evoluiu para um mergulho profundo na Engenharia de Software." },
     "projects-roblox-description2": { en: "Working within Roblox Studio allowed me to master core backend concepts like <strong>Client-Server architecture</strong>, network optimization, and Object-Oriented Programming. This solid foundation in game logic made my transition into systems programming (<strong>C</strong> and <strong>C++</strong>) and Full Stack Web Development (<strong>Python</strong>, <strong>TypeScript</strong>, and <strong>C#</strong>) natural and intuitive.", pt: "Trabalhar com o Roblox Studio me permitiu dominar conceitos pesados de backend como <strong>Arquitetura Cliente-Servidor</strong>, otimização de rede e Programação Orientada a Objetos. Essa base sólida tornou a minha transição para programação de sistemas (<strong>C/C++</strong>) e Full Stack Web (<strong>Python, TypeScript e C#</strong>) muito fluida." },
+    // Entre Patas e Caminhos
+    "projects-paws-title": {
+        en: "Paws and Paths - Narrative Game (UEPG)",
+        pt: "Entre Patas e Caminhos - Jogo Narrativo (UEPG)"
+    },
+    "projects-paws-description1": {
+        en: "I led the development of <strong>Entre Patas e Caminhos (Paws and Paths)</strong>, a narrative awareness game created at the State University of Ponta Grossa (UEPG). The project intersects animal welfare with the protagonist's mental health recovery.",
+        pt: "Liderei o desenvolvimento do <strong>Entre Patas e Caminhos</strong>, um jogo narrativo de consciencialização criado na Universidade Estadual de Ponta Grossa (UEPG). O projeto cruza o bem-estar animal com a recuperação da saúde mental do protagonista."
+    },
+    "projects-paws-description2": {
+        en: "In this project, which is in development, I was responsible for the complete <strong>Requirements Engineering</strong> (functional and non-functional), software architecture modeling via <strong>UML</strong>, flowchart creation, and the structuring of complex branching logic for the game's dialogue trees.",
+        pt: "Neste projeto, que está em desenvolvimento, fui responsável por toda a <strong>Engenharia de Requisitos</strong> (funcionais e não funcionais), modelação da arquitetura de software via <strong>UML</strong>, criação de fluxogramas e pela estruturação de lógicas ramificadas complexas para as árvores de diálogo do jogo."
+    },
     // Contact & Footer
     "contact-title": { en: "Contact Me!", pt: "Entre em Contato!" },
     "contact-name": { en: "Name:", pt: "Nome:" },
@@ -69,7 +79,7 @@ const formMessages = {
     alertSuccess: { en: 'Thank you for your message! I will get back to you soon.', pt: 'Obrigado pela mensagem! Entrarei em contato em breve.' },
     alertError: { en: 'An error occurred while sending your message. Please try again later.', pt: 'Ocorreu um erro ao enviar. Tente novamente mais tarde.' }
 };
-let currentLang = localStorage.getItem("lang") || "en";
+let currentLang = localStorage.getItem("lang") === "pt" ? "pt" : "en";
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem("lang", lang);
