@@ -34,7 +34,7 @@
         <nav class="site-nav" aria-label="Main">
             <ul>
                 <li><a href="#about" data-i18n="nav-about">About</a></li>
-                <li><a href="#jayc">Jay-C</a></li>
+                <li><a href="#jay">Jay</a></li>
                 <li><a href="#creepypasta" data-i18n="nav-games">Games</a></li>
                 <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
                 <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
@@ -87,7 +87,7 @@
                 <span class="mono" data-i18n="term-try">try:</span>
                 <button type="button" class="chip-btn mono" data-cmd="help">help</button>
                 <button type="button" class="chip-btn mono" data-cmd="whoami">whoami</button>
-                <button type="button" class="chip-btn mono" data-cmd="jayc">jayc</button>
+                <button type="button" class="chip-btn mono" data-cmd="jay">jay</button>
                 <button type="button" class="chip-btn mono" data-cmd="security">security</button>
             </div>
         </div>
@@ -173,13 +173,44 @@
         </div>
     </section>
 
-    <!-- JAY-C (featured) -->
-    <section id="jayc" class="section container">
+    <!-- THE JAY LINE (brand) -->
+    <section id="jay" class="section container">
         <header class="section-head reveal">
-            <p class="section-tag mono" data-i18n="jayc-tag">// 02 · featured project</p>
-            <h2 class="jayc-title"><img src="assets/jayc/wolf-neon.webp" alt="" class="jayc-logo" width="64" height="64">Jay-C</h2>
-            <p class="section-lead" data-i18n="jayc-lead">Lightweight, open-source calls and screen sharing for desktop and mobile, on a server you control.</p>
+            <p class="section-tag mono" data-i18n="jay-tag">// 02 · my own brand</p>
+            <h2 class="jayc-title"><img src="assets/jayc/wolf-neon.webp" alt="" class="jayc-logo" width="64" height="64"><span data-i18n="jay-title">The Jay line</span></h2>
+            <p class="section-lead" data-i18n="jay-lead">Jay is my own family of lightweight, open-source desktop apps. They share the wolf, the look and the stack, and they work together: one for calls, one for audio, one for files and a hub that installs them all.</p>
         </header>
+
+        <ul class="brand-grid">
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-feather" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p1-title">Light by design</h3>
+                <p data-i18n="jay-p1">Tauri v2 instead of Electron, with the heavy work in Rust. Small installers, low memory, fast start.</p>
+            </li>
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-palette" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p2-title">One look</h3>
+                <p data-i18n="jay-p2">Every app ships the same Calm, Neon and Soft styles, light or dark, in English or Portuguese.</p>
+            </li>
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-link" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p3-title">Built to work together</h3>
+                <p data-i18n="jay-p3">Jay-A hands Jay-C a filtered microphone over a local link, and Jay-H installs and updates the whole line.</p>
+            </li>
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-lock-open" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p4-title">Open and yours</h3>
+                <p data-i18n="jay-p4">MIT licensed, no accounts, no ads. Updates come straight from the public GitHub releases.</p>
+            </li>
+        </ul>
+
+        <div class="product-head reveal" id="jayc">
+            <span class="product-badge mono" aria-hidden="true">C</span>
+            <div>
+                <h3>Jay-C <span class="product-role mono" data-i18n="jayc-role">calls &amp; screen sharing · flagship</span></h3>
+                <p data-i18n="jayc-lead">Lightweight, open-source calls and screen sharing for desktop and mobile, on a server you control.</p>
+            </div>
+        </div>
 
         <div class="jayc-grid">
             <div class="showcase reveal" data-slideshow>
@@ -222,10 +253,84 @@
                 </ul>
 
                 <div class="link-row">
-                    <a href="https://github.com/TyxMatty/JayC" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="jayc-github">Source code</span></a>
-                    <a href="https://github.com/TyxMatty/JayC/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="jayc-download">Download for Windows</span></a>
+                    <a href="https://github.com/TyxMatty/Jay-C" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="jayc-github">Source code</span></a>
+                    <a href="https://github.com/TyxMatty/Jay-C/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="jayc-download">Download for Windows</span></a>
                 </div>
             </div>
+        </div>
+
+        <div class="family-grid">
+            <article class="product-card card reveal" id="jay-a">
+                <div class="product-head">
+                    <span class="product-badge mono" aria-hidden="true">A</span>
+                    <div>
+                        <h3>Jay-A <span class="product-role mono" data-i18n="jaya-role">audio</span></h3>
+                    </div>
+                </div>
+                <button type="button" class="shot product-shot" data-zoom><img src="assets/jay/jay-a-filters.webp" alt="Jay-A filters page: microphone settings and the effect chain with AI noise removal" width="1264" height="985" loading="lazy" decoding="async"></button>
+                <p data-i18n="jaya-desc">The audio app of the line: a clean voice for Jay-C calls without a noise-removal subscription. It runs in the tray and feeds Jay-C through the <strong>Jay Link</strong>; if Jay-A stops, the call keeps going on Jay-C's own filter.</p>
+                <ul class="feature-list" data-i18n="jaya-features">
+                    <li>AI noise removal (DeepFilterNet or RNNoise) plus WebRTC cleanup</li>
+                    <li>Effect chain: filter, gate, EQ, compressor, de-esser, limiter, with presets</li>
+                    <li>Soundboard, audio editor and converter on the way</li>
+                </ul>
+                <ul class="chips chips-tech" aria-label="Tech stack"><li>Rust</li><li>Tauri v2</li><li>WebRTC APM</li><li>DeepFilterNet</li></ul>
+                <a href="https://github.com/TyxMatty/Jay-A" target="_blank" rel="noopener noreferrer" class="project-link mono"><i class="fab fa-github" aria-hidden="true"></i> TyxMatty/Jay-A</a>
+            </article>
+
+            <article class="product-card card reveal" id="jay-e">
+                <div class="product-head">
+                    <span class="product-badge mono" aria-hidden="true">E</span>
+                    <div>
+                        <h3>Jay-E <span class="product-role mono" data-i18n="jaye-role">editor &amp; reader</span></h3>
+                    </div>
+                </div>
+                <div class="showcase" data-slideshow>
+                    <div class="slides-viewport">
+                        <button type="button" class="showcase-main" data-zoom aria-label="Enlarge screenshot">
+                            <img class="slide-img" src="assets/jay/jay-e-markdown.webp" alt="Jay-E Markdown editor with the live preview side by side" width="1600" height="968" loading="lazy" decoding="async">
+                        </button>
+                        <button type="button" class="slide-arrow slide-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                        <button type="button" class="slide-arrow slide-next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                        <span class="slide-count mono" aria-live="polite">1 / 2</span>
+                    </div>
+                    <div class="thumbs thumbs-2" role="group" aria-label="Jay-E screenshots">
+                        <button type="button" class="thumb" aria-pressed="true" data-src="assets/jay/jay-e-markdown.webp" data-alt="Jay-E Markdown editor with the live preview side by side">
+                            <img src="assets/jay/jay-e-markdown.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono">markdown</span>
+                        </button>
+                        <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/jay-e-image.webp" data-alt="Jay-E image editor with rotate, crop and adjust tools">
+                            <img src="assets/jay/jay-e-image.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaye-shot-image">image</span>
+                        </button>
+                    </div>
+                </div>
+                <p data-i18n="jaye-desc">One small, fast app to open, fix up and convert everyday files, instead of an office suite, a photo editor and a video editor.</p>
+                <ul class="feature-list" data-i18n="jaye-features">
+                    <li>Its own PDF reader drawn in Rust, with search and password-protected files</li>
+                    <li>Markdown and LaTeX with a live preview; DOCX, ODT and RTF export</li>
+                    <li>Images to WebP/AVIF in batches; cut and join video without re-encoding</li>
+                    <li>Markdown preview sanitized in Rust (ammonia) before it reaches the page</li>
+                </ul>
+                <ul class="chips chips-tech" aria-label="Tech stack"><li>Rust</li><li>Tauri 2</li><li>hayro</li><li>CodeMirror 6</li><li>Media Foundation</li></ul>
+                <a href="https://github.com/TyxMatty/Jay-E" target="_blank" rel="noopener noreferrer" class="project-link mono"><i class="fab fa-github" aria-hidden="true"></i> TyxMatty/Jay-E</a>
+            </article>
+
+            <article class="product-card card reveal" id="jay-h">
+                <div class="product-head">
+                    <span class="product-badge mono" aria-hidden="true">H</span>
+                    <div>
+                        <h3>Jay-H <span class="product-role mono" data-i18n="jayh-role">hub</span></h3>
+                    </div>
+                </div>
+                <button type="button" class="shot product-shot" data-zoom><img src="assets/jay/jay-h.webp" alt="Jay-H products page with a card per Jay app, its installed and latest version" width="1280" height="800" loading="lazy" decoding="async"></button>
+                <p data-i18n="jayh-desc">The front door of the line: every Jay app in one place, to install, update and open it.</p>
+                <ul class="feature-list" data-i18n="jayh-features">
+                    <li>A card per app with the installed version and the latest GitHub release</li>
+                    <li>One click to install, update or open; it updates itself too</li>
+                    <li>Per-user Windows installer: no admin rights needed</li>
+                </ul>
+                <ul class="chips chips-tech" aria-label="Tech stack"><li>Rust</li><li>Tauri v2</li><li>GitHub Releases</li><li>NSIS</li></ul>
+                <a href="https://github.com/TyxMatty/Jay-H" target="_blank" rel="noopener noreferrer" class="project-link mono"><i class="fab fa-github" aria-hidden="true"></i> TyxMatty/Jay-H</a>
+            </article>
         </div>
     </section>
 

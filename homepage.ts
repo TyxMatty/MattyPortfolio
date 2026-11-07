@@ -68,8 +68,52 @@ const translations: Record<string, Record<Lang, string>> = {
     "acc-milestones-title": { en: "Academic & Professional Milestones", pt: "Marcos Acadêmicos e Profissionais" },
     "acc-milestones-desc": { en: "I completed multiple courses in software engineering, web development, and game creation, enhancing my technical skills and knowledge, such as getting admitted in UEPG and other institutions.", pt: "Concluí diversos cursos em engenharia de software, desenvolvimento web e criação de jogos, aprimorando minhas habilidades, bem como obtendo aprovações na UEPG e outras instituições." },
 
+    // The Jay line
+    "jay-tag": { en: "// 02 · my own brand", pt: "// 02 · minha própria marca" },
+    "jay-title": { en: "The Jay line", pt: "A linha Jay" },
+    "jay-lead": {
+        en: "Jay is my own family of lightweight, open-source desktop apps. They share the wolf, the look and the stack, and they work together: one for calls, one for audio, one for files and a hub that installs them all.",
+        pt: "Jay é a minha própria família de apps desktop leves e open source. Eles compartilham o lobo, o visual e a stack, e funcionam juntos: um para chamadas, um para áudio, um para arquivos e um hub que instala todos."
+    },
+    "jay-p1-title": { en: "Light by design", pt: "Leve por natureza" },
+    "jay-p1": { en: "Tauri v2 instead of Electron, with the heavy work in Rust. Small installers, low memory, fast start.", pt: "Tauri v2 no lugar do Electron, com o trabalho pesado em Rust. Instaladores pequenos, pouca memória e abertura rápida." },
+    "jay-p2-title": { en: "One look", pt: "Um só visual" },
+    "jay-p2": { en: "Every app ships the same Calm, Neon and Soft styles, light or dark, in English or Portuguese.", pt: "Todo app traz os mesmos estilos Calm, Neon e Soft, claro ou escuro, em inglês ou português." },
+    "jay-p3-title": { en: "Built to work together", pt: "Feitos para funcionar juntos" },
+    "jay-p3": { en: "Jay-A hands Jay-C a filtered microphone over a local link, and Jay-H installs and updates the whole line.", pt: "O Jay-A entrega ao Jay-C o microfone filtrado por um link local, e o Jay-H instala e atualiza a linha toda." },
+    "jay-p4-title": { en: "Open and yours", pt: "Aberto e seu" },
+    "jay-p4": { en: "MIT licensed, no accounts, no ads. Updates come straight from the public GitHub releases.", pt: "Licença MIT, sem contas e sem anúncios. As atualizações vêm direto dos releases públicos no GitHub." },
+    "jayc-role": { en: "calls & screen sharing · flagship", pt: "chamadas e tela · carro-chefe" },
+    "jaya-role": { en: "audio", pt: "áudio" },
+    "jaya-desc": {
+        en: "The audio app of the line: a clean voice for Jay-C calls without a noise-removal subscription. It runs in the tray and feeds Jay-C through the <strong>Jay Link</strong>; if Jay-A stops, the call keeps going on Jay-C's own filter.",
+        pt: "O app de áudio da linha: voz limpa nas chamadas do Jay-C sem assinatura de remoção de ruído. Ele roda na bandeja e alimenta o Jay-C pelo <strong>Jay Link</strong>; se o Jay-A parar, a chamada segue com o filtro do próprio Jay-C."
+    },
+    "jaya-features": {
+        en: "<li>AI noise removal (DeepFilterNet or RNNoise) plus WebRTC cleanup</li><li>Effect chain: filter, gate, EQ, compressor, de-esser, limiter, with presets</li><li>Soundboard, audio editor and converter on the way</li>",
+        pt: "<li>Remoção de ruído com IA (DeepFilterNet ou RNNoise) mais a limpeza do WebRTC</li><li>Cadeia de efeitos: filtro, gate, EQ, compressor, de-esser, limiter, com presets</li><li>Soundboard, editor de áudio e conversor a caminho</li>"
+    },
+    "jaye-role": { en: "editor & reader", pt: "editor e leitor" },
+    "jaye-shot-image": { en: "image", pt: "imagem" },
+    "jaye-desc": {
+        en: "One small, fast app to open, fix up and convert everyday files, instead of an office suite, a photo editor and a video editor.",
+        pt: "Um app pequeno e rápido para abrir, ajustar e converter arquivos do dia a dia, no lugar de um pacote office, um editor de fotos e um editor de vídeo."
+    },
+    "jaye-features": {
+        en: "<li>Its own PDF reader drawn in Rust, with search and password-protected files</li><li>Markdown and LaTeX with a live preview; DOCX, ODT and RTF export</li><li>Images to WebP/AVIF in batches; cut and join video without re-encoding</li><li>Markdown preview sanitized in Rust (ammonia) before it reaches the page</li>",
+        pt: "<li>Leitor de PDF próprio desenhado em Rust, com busca e arquivos com senha</li><li>Markdown e LaTeX com prévia ao vivo; exporta DOCX, ODT e RTF</li><li>Imagens para WebP/AVIF em lote; corta e junta vídeo sem recodificar</li><li>Prévia do Markdown sanitizada em Rust (ammonia) antes de chegar à página</li>"
+    },
+    "jayh-role": { en: "hub", pt: "hub" },
+    "jayh-desc": {
+        en: "The front door of the line: every Jay app in one place, to install, update and open it.",
+        pt: "A porta de entrada da linha: todos os apps Jay num lugar só, para instalar, atualizar e abrir."
+    },
+    "jayh-features": {
+        en: "<li>A card per app with the installed version and the latest GitHub release</li><li>One click to install, update or open; it updates itself too</li><li>Per-user Windows installer: no admin rights needed</li>",
+        pt: "<li>Um card por app com a versão instalada e o último release no GitHub</li><li>Um clique para instalar, atualizar ou abrir; ele também se atualiza</li><li>Instalador do Windows por usuário: sem precisar de admin</li>"
+    },
+
     // Jay-C
-    "jayc-tag": { en: "// 02 · featured project", pt: "// 02 · projeto em destaque" },
     "jayc-lead": {
         en: "Lightweight, open-source calls and screen sharing for desktop and mobile, on a server you control.",
         pt: "Chamadas e compartilhamento de tela leves e open source, para desktop e mobile, num servidor que você controla."
@@ -209,34 +253,38 @@ setLanguage(currentLang);
 const termOut = document.getElementById("term-output");
 const termForm = document.getElementById("term-form") as HTMLFormElement | null;
 const termInput = document.getElementById("term-cmd") as HTMLInputElement | null;
-const SECTIONS = ["about", "jayc", "creepypasta", "projects", "contact"];
+const SECTIONS = ["about", "jay", "creepypasta", "projects", "contact"];
+// cd aliases for anchors inside a section
+const CD_ALIASES: Record<string, string> = { games: "creepypasta", jayc: "jayc", "jay-a": "jay-a", "jay-e": "jay-e", "jay-h": "jay-h" };
 
 const termText: Record<Lang, Record<string, Line[]>> = {
     en: {
-        boot: [["booting matty.dev v2.0 ...", "t-muted"], ["[ok] modules loaded: game-dev, full-stack, security", "t-ok"], ["[ok] featured project: Jay-C", "t-ok"], ["type 'help' to list commands.", "t-accent"]],
-        help: [["available commands:", "t-accent"], ["  whoami     who is Matty"], ["  skills     languages and domains"], ["  jayc       the featured project"], ["  games      Steal a Creepypasta"], ["  security   how this site is hardened"], ["  socials    where to find me"], ["  ls / cd    list and jump to sections"], ["  lang       switch EN / PT"], ["  date, echo, clear"]],
+        boot: [["booting matty.dev v2.0 ...", "t-muted"], ["[ok] modules loaded: game-dev, full-stack, security", "t-ok"], ["[ok] brand loaded: Jay (C · A · E · H)", "t-ok"], ["type 'help' to list commands.", "t-accent"]],
+        help: [["available commands:", "t-accent"], ["  whoami     who is Matty"], ["  skills     languages and domains"], ["  jay        the Jay line (my brand)"], ["  jayc       Jay-C, the flagship"], ["  games      Steal a Creepypasta"], ["  security   how this site is hardened"], ["  socials    where to find me"], ["  ls / cd    list and jump to sections"], ["  lang       switch EN / PT"], ["  date, echo, clear"]],
         whoami: [["Mateus Valenga, aka Matty.", "t-accent"], ["18 y/o Software Engineering student from Brazil."], ["Game dev since 2019 (Lua/Luau, C#), full stack (TS, Python),"], ["systems (C/C++, Rust) and a security-first mindset."]],
         skills: [["languages: C/C++  C#  TypeScript  JavaScript  Python  Lua  Luau  Rust"], ["domains:   game dev · full stack web · apps · digital logic"], ["security:  rate limiting · input validation · anti-exploit · CSP/SRI", "t-ok"]],
         jayc: [["Jay-C: self-hosted calls & screen sharing", "t-accent"], ["stack: Tauri v2 (Rust) + Vanilla JS + mediasoup SFU + Docker"], ["[ok] DTLS-SRTP media  [ok] token-bucket rate limits  [ok] strict CSP", "t-ok"], ["up to 16 people per room. MIT licensed."], ["-> cd jayc", "t-muted"]],
         games: [["Steal a Creepypasta: Sealed Entities (Roblox)", "t-accent"], ["steal cursed eggs, unseal entities, defend your bunker."], ["[!!] server-authoritative, movement sanity checks, payload validation", "t-err"], ["-> cd creepypasta", "t-muted"]],
         security: [["site security report", "t-accent"], ["[ok] Content-Security-Policy: scripts from self + jsDelivr only", "t-ok"], ["[ok] Subresource Integrity on every CDN script/style", "t-ok"], ["[ok] no cookies, no trackers, no analytics", "t-ok"], ["[ok] contact form: honeypot, validation, length caps, cooldown", "t-ok"], ["[ok] external links: rel=noopener noreferrer", "t-ok"], ["[ok] this terminal renders input as text, never HTML", "t-ok"]],
         socials: [["github:   github.com/TyxMatty"], ["linkedin: linkedin.com/in/mateus-valenga-dos-santos-arruda"], ["or: cd contact", "t-muted"]],
-        ls: [["about/  jayc/  creepypasta/  projects/  contact/", "t-accent"]],
+        ls: [["about/  jay/  creepypasta/  projects/  contact/", "t-accent"], ["jay/: jayc  jay-a  jay-e  jay-h", "t-muted"]],
+        jay: [["Jay: my own line of lightweight, open-source desktop apps", "t-accent"], ["  Jay-C  calls & screen sharing (flagship)"], ["  Jay-A  audio: AI noise removal, effects, Jay Link to Jay-C"], ["  Jay-E  editor & reader: PDF, Markdown, images, video"], ["  Jay-H  hub: installs and updates the whole line"], ["[ok] Tauri v2 + Rust  [ok] MIT  [ok] no accounts, no ads", "t-ok"], ["-> cd jay", "t-muted"]],
         sudo: [["matty is not in the sudoers file. This incident will be reported.", "t-err"]],
         notfound: [["command not found", "t-err"]],
         nodir: [["no such section. try: ls", "t-err"]],
         lang: [["[ok] language set to English", "t-ok"]]
     },
     pt: {
-        boot: [["iniciando matty.dev v2.0 ...", "t-muted"], ["[ok] módulos carregados: game-dev, full-stack, segurança", "t-ok"], ["[ok] projeto em destaque: Jay-C", "t-ok"], ["digite 'help' para ver os comandos.", "t-accent"]],
-        help: [["comandos disponíveis:", "t-accent"], ["  whoami     quem é o Matty"], ["  skills     linguagens e áreas"], ["  jayc       o projeto em destaque"], ["  games      Steal a Creepypasta"], ["  security   como este site é protegido"], ["  socials    onde me encontrar"], ["  ls / cd    listar e ir para as seções"], ["  lang       trocar EN / PT"], ["  date, echo, clear"]],
+        boot: [["iniciando matty.dev v2.0 ...", "t-muted"], ["[ok] módulos carregados: game-dev, full-stack, segurança", "t-ok"], ["[ok] marca carregada: Jay (C · A · E · H)", "t-ok"], ["digite 'help' para ver os comandos.", "t-accent"]],
+        help: [["comandos disponíveis:", "t-accent"], ["  whoami     quem é o Matty"], ["  skills     linguagens e áreas"], ["  jay        a linha Jay (minha marca)"], ["  jayc       Jay-C, o carro-chefe"], ["  games      Steal a Creepypasta"], ["  security   como este site é protegido"], ["  socials    onde me encontrar"], ["  ls / cd    listar e ir para as seções"], ["  lang       trocar EN / PT"], ["  date, echo, clear"]],
         whoami: [["Mateus Valenga, o Matty.", "t-accent"], ["18 anos, estudante de Engenharia de Software no Brasil."], ["Dev de jogos desde 2019 (Lua/Luau, C#), full stack (TS, Python),"], ["sistemas (C/C++, Rust) e mentalidade de segurança em primeiro lugar."]],
         skills: [["linguagens: C/C++  C#  TypeScript  JavaScript  Python  Lua  Luau  Rust"], ["áreas:      jogos · web full stack · apps · lógica digital"], ["segurança:  rate limiting · validação de entrada · anti-exploit · CSP/SRI", "t-ok"]],
         jayc: [["Jay-C: chamadas e compartilhamento de tela self-hosted", "t-accent"], ["stack: Tauri v2 (Rust) + Vanilla JS + SFU mediasoup + Docker"], ["[ok] mídia DTLS-SRTP  [ok] rate limit token bucket  [ok] CSP rígida", "t-ok"], ["até 16 pessoas por sala. Licença MIT."], ["-> cd jayc", "t-muted"]],
         games: [["Steal a Creepypasta: Sealed Entities (Roblox)", "t-accent"], ["roube ovos amaldiçoados, libere entidades, defenda seu bunker."], ["[!!] servidor autoritativo, checagem de movimento, validação de payload", "t-err"], ["-> cd creepypasta", "t-muted"]],
         security: [["relatório de segurança do site", "t-accent"], ["[ok] Content-Security-Policy: scripts só do próprio site + jsDelivr", "t-ok"], ["[ok] Subresource Integrity em todo script/estilo de CDN", "t-ok"], ["[ok] sem cookies, sem rastreadores, sem analytics", "t-ok"], ["[ok] formulário: honeypot, validação, limite de tamanho, cooldown", "t-ok"], ["[ok] links externos: rel=noopener noreferrer", "t-ok"], ["[ok] este terminal exibe a entrada como texto, nunca como HTML", "t-ok"]],
         socials: [["github:   github.com/TyxMatty"], ["linkedin: linkedin.com/in/mateus-valenga-dos-santos-arruda"], ["ou: cd contact", "t-muted"]],
-        ls: [["about/  jayc/  creepypasta/  projects/  contact/", "t-accent"]],
+        ls: [["about/  jay/  creepypasta/  projects/  contact/", "t-accent"], ["jay/: jayc  jay-a  jay-e  jay-h", "t-muted"]],
+        jay: [["Jay: minha linha de apps desktop leves e open source", "t-accent"], ["  Jay-C  chamadas e tela (carro-chefe)"], ["  Jay-A  áudio: remoção de ruído com IA, efeitos, Jay Link pro Jay-C"], ["  Jay-E  editor e leitor: PDF, Markdown, imagens, vídeo"], ["  Jay-H  hub: instala e atualiza a linha toda"], ["[ok] Tauri v2 + Rust  [ok] MIT  [ok] sem contas, sem anúncios", "t-ok"], ["-> cd jay", "t-muted"]],
         sudo: [["matty não está no arquivo sudoers. Este incidente será reportado.", "t-err"]],
         notfound: [["comando não encontrado", "t-err"]],
         nodir: [["seção não encontrada. tente: ls", "t-err"]],
@@ -244,7 +292,7 @@ const termText: Record<Lang, Record<string, Line[]>> = {
     }
 };
 // Commands that print a fixed block; 'notfound', 'nodir' and 'boot' are messages, not commands.
-const STATIC_COMMANDS = ["help", "whoami", "skills", "jayc", "games", "creepypasta", "security", "socials", "ls", "sudo"];
+const STATIC_COMMANDS = ["help", "whoami", "skills", "jay", "jayc", "games", "creepypasta", "security", "socials", "ls", "sudo"];
 
 const cmdHistory: string[] = [];
 let historyIndex = 0;
@@ -283,8 +331,8 @@ function runCommand(raw: string) {
         print(args.join(" "));
     } else if (cmd === "cd") {
         const target = (args[0] ?? "").replace(/\/$/, "").toLowerCase();
-        const id = target === "games" ? "creepypasta" : target;
-        const section = SECTIONS.includes(id) ? document.getElementById(id) : null;
+        const id = Object.prototype.hasOwnProperty.call(CD_ALIASES, target) ? CD_ALIASES[target] : target;
+        const section = SECTIONS.includes(id) || Object.values(CD_ALIASES).includes(id) ? document.getElementById(id) : null;
         if (section) {
             print(`-> /${id}`, "t-accent");
             section.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
