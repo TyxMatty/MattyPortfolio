@@ -1080,8 +1080,7 @@ code {
 
 /* ---------- the Jay line ---------- */
 /* component tokens: one accent per product, everything else reads --accent */
-#jayc,
-.jayc-grid { --accent: var(--cyan-400); }
+#jayc { --accent: var(--cyan-400); }
 #jay-a { --accent: var(--violet-400); }
 #jay-e { --accent: var(--amber-400); }
 #jay-h { --accent: var(--green-400); }
@@ -1160,79 +1159,62 @@ code {
     white-space: nowrap;
 }
 
-.family-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-5);
-    margin-top: var(--space-8);
-    align-items: start;
+.product + .product {
+    margin-top: var(--space-9);
+    padding-top: var(--space-8);
+    border-top: 1px dashed var(--color-border);
 }
 
-.product-card {
-    display: grid;
-    gap: var(--space-4);
-    padding: var(--space-5);
-}
-
-.product-card:hover {
-    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
-}
-
-.product-card .product-head {
-    margin-bottom: 0;
-}
-
-.product-card > p {
-    color: var(--color-text-soft);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-}
-
-.product-card strong {
-    color: var(--accent);
-    font-weight: 600;
-}
-
-.product-card .feature-list {
-    margin-bottom: 0;
-}
-
-.product-card .feature-list li::before {
+/* everything inside a product block follows its accent */
+.product .jayc-info strong,
+.product .product-head strong {
     color: var(--accent);
 }
 
-.product-card .chips li {
+.product .chips-tech li {
     --chip-bg: color-mix(in srgb, var(--accent) 8%, transparent);
     --chip-border: color-mix(in srgb, var(--accent) 30%, transparent);
     --chip-fg: var(--accent);
 }
 
-.product-card .project-link {
-    color: var(--accent);
+.product .showcase-main {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent),
+        0 0 28px color-mix(in srgb, var(--accent) 18%, transparent),
+        0 30px 80px rgb(0 0 0 / 0.5);
 }
 
-.product-shot img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    object-position: top left;
-}
-
-.product-card .showcase-main,
-.product-card .shot:hover,
-.product-card .showcase-main:hover {
-    box-shadow: none;
-    border-color: var(--accent);
-}
-
-.product-card .thumb[aria-pressed="true"] {
+.product .showcase-main:hover,
+.product .thumb[aria-pressed="true"] {
     border-color: var(--accent);
     color: var(--accent);
 }
 
-.thumbs-2 {
-    grid-template-columns: repeat(2, 1fr);
+.product .slide-arrow:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.product .btn-primary {
+    background: var(--accent);
+}
+
+.product .btn-primary:hover {
+    background: color-mix(in srgb, var(--accent) 80%, white);
+    box-shadow: 0 0 32px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.product .btn-outline {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.product .btn-outline:hover {
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.product .project-note {
+    margin-top: var(--space-4);
 }
 
 /* ---------- Steal a Creepypasta ---------- */
@@ -1546,8 +1528,7 @@ textarea {
         gap: var(--space-6);
     }
 
-    .projects-container,
-    .family-grid {
+    .projects-container {
         grid-template-columns: minmax(0, 1fr);
     }
 
