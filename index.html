@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Static host (GitHub Pages) can't send headers, so the policy lives here. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.emailjs.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Matty (Mateus Valenga): game developer, full stack web developer and software engineering student. Creator of Jay-C, a self-hosted calls and screen-sharing app.">
+    <meta name="theme-color" content="#05070a">
+    <title>Matty | Game Dev &amp; Full Stack</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="homepage.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous" defer></script>
+    <script src="homepage.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="skip-link">Skip to content</a>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-scanlines" aria-hidden="true"></div>
+<div class="progress-container" aria-hidden="true">
+    <div class="progress-bar" id="myBar"></div>
+</div>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="#hero" class="brand mono" aria-label="Matty, back to top">
+            <span class="brand-user">matty@dev</span><span class="brand-path">:~$</span><span class="cursor" aria-hidden="true"></span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+            <ul>
+                <li><a href="#about" data-i18n="nav-about">About</a></li>
+                <li><a href="#jay">Jay</a></li>
+                <li><a href="#creepypasta" data-i18n="nav-games">Games</a></li>
+                <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
+                <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="https://www.linkedin.com/in/mateus-valenga-dos-santos-arruda/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/TyxMatty" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
+                <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+            <button id="lang-btn" class="lang-toggle mono" type="button" aria-label="Mudar para português">
+                <i class="fa-solid fa-language" aria-hidden="true"></i> <span id="lang-label">PT-BR</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+    <!-- HERO -->
+    <section id="hero" class="hero container">
+        <div class="hero-copy reveal">
+            <p class="eyebrow mono"><span class="status-dot" aria-hidden="true"></span> <span data-i18n="hero-eyebrow">online · open to opportunities</span></p>
+            <h1 data-i18n="hero-title">Hi, I'm <span class="glitch" data-text="Matty">Matty</span>.</h1>
+            <p class="hero-sub" data-i18n="hero-subtitle">Game developer and full stack engineer. I build immersive games and robust software, with security in mind from the first commit.</p>
+            <div class="hero-buttons">
+                <a href="#jayc" class="btn btn-primary" data-i18n="btn-jayc">See Jay-C</a>
+                <a href="#projects" class="btn btn-outline" data-i18n="btn-work">See My Work</a>
+                <a href="#contact" class="btn btn-ghost" data-i18n="btn-contact">Let's Talk</a>
+            </div>
+            <ul class="hero-stats mono">
+                <li><strong>2019</strong><span data-i18n="stat-games">making games since</span></li>
+                <li><strong>16</strong><span data-i18n="stat-room">people per Jay-C room</span></li>
+                <li><strong>7</strong><span data-i18n="stat-langs">programming languages</span></li>
+            </ul>
+        </div>
+
+        <div class="terminal reveal" id="terminal">
+            <div class="terminal-bar">
+                <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="terminal-title mono">matty@dev: ~</span>
+            </div>
+            <div class="terminal-body mono" id="term-output" role="log" aria-live="polite" aria-label="Terminal output"></div>
+            <form class="terminal-input mono" id="term-form" autocomplete="off">
+                <label for="term-cmd" class="prompt">matty@dev:~$</label>
+                <input id="term-cmd" name="cmd" type="text" maxlength="64" spellcheck="false" autocapitalize="off" aria-describedby="term-hint">
+            </form>
+            <div class="terminal-chips" id="term-hint">
+                <span class="mono" data-i18n="term-try">try:</span>
+                <button type="button" class="chip-btn mono" data-cmd="help">help</button>
+                <button type="button" class="chip-btn mono" data-cmd="whoami">whoami</button>
+                <button type="button" class="chip-btn mono" data-cmd="jay">jay</button>
+                <button type="button" class="chip-btn mono" data-cmd="security">security</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section container">
+        <header class="section-head reveal">
+            <p class="section-tag mono" data-i18n="about-tag">// 01 · about</p>
+            <h2 data-i18n="about-title">About Me</h2>
+        </header>
+
+        <div class="about-grid">
+            <aside class="id-card card reveal">
+                <img src="FotoPortfolio.jpg" alt="A portrait of Mateus Valenga, Matty" class="profile-pic" width="200" height="200" loading="lazy" decoding="async">
+                <dl class="id-meta mono">
+                    <div><dt>name</dt><dd>Mateus Valenga</dd></div>
+                    <div><dt>alias</dt><dd>Matty</dd></div>
+                    <div><dt data-i18n="id-role-k">role</dt><dd data-i18n="id-role">Software Engineering student</dd></div>
+                    <div><dt data-i18n="id-loc-k">location</dt><dd data-i18n="id-loc">Brazil</dd></div>
+                    <div><dt>status</dt><dd class="ok" data-i18n="id-status">available</dd></div>
+                </dl>
+            </aside>
+
+            <div class="about-text reveal">
+                <p data-i18n="about-bio1">
+                    Hello! I'm <strong>Mateus Valenga</strong>, also known as <strong>Matty</strong>.
+                    I'm a 18-year-old Software Engineering student with a passion for software development, web development and game creation.
+                    I'm currently based in Brazil, and I'm eager to connect with like-minded individuals and explore exciting opportunities in the tech world.
+                </p>
+                <p data-i18n="about-bio2">
+                    My core focus lies in <strong>Software Engineering</strong>, <strong>C/C++</strong> and <strong>Full Stack Web Development</strong>,
+                    alongside crafting immersive experiences as a <strong>Game Developer</strong>, specializing in <strong>lua, luau and C#</strong>.
+                    Currently, I'm expanding my Full Stack Web Development skills to bring robust backends and clean frontends to life and working on my app development abilities, whilst improving my overall technical capabilities - which include
+                    consulting skills and project management.
+                </p>
+
+                <div class="skills-grid">
+                    <div class="skill-card card">
+                        <h3 class="mono"><i class="fa-solid fa-code" aria-hidden="true"></i> <span data-i18n="skills-core-languages">Core Languages</span></h3>
+                        <ul class="chips">
+                            <li>C/C++</li><li>C#</li><li>TypeScript</li><li>JavaScript</li><li>Python</li><li>Lua</li><li>Luau</li><li>Rust</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card card">
+                        <h3 class="mono"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> <span data-i18n="skills-domains-title">Domains &amp; Interests</span></h3>
+                        <ul class="chips" data-i18n="skills-domains-desc">
+                            <li>Game Development</li><li>Digital Logic</li><li>Full Stack Web</li><li>App Development</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card card skill-card-sec">
+                        <h3 class="mono"><i class="fa-solid fa-shield-alt" aria-hidden="true"></i> <span data-i18n="skills-sec-title">Security Mindset</span></h3>
+                        <ul class="chips" data-i18n="skills-sec-desc">
+                            <li>Rate limiting</li><li>Input validation</li><li>Anti-exploit</li><li>CSP &amp; SRI</li><li>Self-hosting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accomplishments-grid">
+            <article class="accomplishment-card card reveal">
+                <img src="OBA.png" alt="The OBA medal won by Matty" class="accomplishment-image" loading="lazy" decoding="async">
+                <div>
+                    <h3 data-i18n="acc-oba-title">OBA Gold medalist</h3>
+                    <p data-i18n="acc-oba-desc">I won the gold medal at the OBA (Olimpíada Brasileira de Astronomia), which demonstrated excellence in astronomical knowledge, problem-solving and logic related skills.</p>
+                </div>
+            </article>
+            <article class="accomplishment-card card reveal">
+                <img src="AMBEV.png" alt="AMBEV logo" class="accomplishment-image" loading="lazy" decoding="async">
+                <div>
+                    <h3 data-i18n="acc-ambev-title">AMBEV-Consulting</h3>
+                    <p data-i18n="acc-ambev-desc">I was hired as a junior consultant to work on various I.T-related projects, mostly involving SAP, automation and database management.</p>
+                </div>
+            </article>
+            <article class="accomplishment-card card reveal">
+                <img src="UEPGlogo.png" alt="UEPG logo" class="accomplishment-image" loading="lazy" decoding="async">
+                <div>
+                    <h3 data-i18n="acc-milestones-title">Academic &amp; Professional Milestones</h3>
+                    <p data-i18n="acc-milestones-desc">I completed multiple courses in software engineering, web development, and game creation, enhancing my technical skills and knowledge, such as getting admitted in UEPG and other institutions.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- THE JAY LINE (brand) -->
+    <section id="jay" class="section container">
+        <header class="section-head reveal">
+            <p class="section-tag mono" data-i18n="jay-tag">// 02 · my own brand</p>
+            <h2 class="jayc-title"><img src="assets/jayc/wolf-neon.webp" alt="" class="jayc-logo" width="64" height="64"><span data-i18n="jay-title">The Jay line</span></h2>
+            <p class="section-lead" data-i18n="jay-lead">Jay is my own family of lightweight, open-source desktop apps. They share the wolf, the look and the stack, and they work together: one for calls, one for audio, one for files and a hub that installs them all.</p>
+        </header>
+
+        <ul class="brand-grid">
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-feather" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p1-title">Light by design</h3>
+                <p data-i18n="jay-p1">Tauri v2 instead of Electron, with the heavy work in Rust. Small installers, low memory, fast start.</p>
+            </li>
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-palette" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p2-title">One look</h3>
+                <p data-i18n="jay-p2">Every app ships the same Calm, Neon and Soft styles, light or dark, in English or Portuguese.</p>
+            </li>
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-link" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p3-title">Built to work together</h3>
+                <p data-i18n="jay-p3">Jay-A hands Jay-C a filtered microphone over a local link, and Jay-H installs and updates the whole line.</p>
+            </li>
+            <li class="brand-point card reveal">
+                <i class="fa-solid fa-lock-open" aria-hidden="true"></i>
+                <h3 data-i18n="jay-p4-title">Open and yours</h3>
+                <p data-i18n="jay-p4">MIT licensed, no accounts, no ads. Updates come straight from the public GitHub releases.</p>
+            </li>
+        </ul>
+
+        <div class="product" id="jayc">
+        <div class="product-head reveal">
+            <span class="product-badge mono" aria-hidden="true">C</span>
+            <div>
+                <h3>Jay-C <span class="product-role mono" data-i18n="jayc-role">calls &amp; servers · flagship</span> <span class="product-role product-version mono">v0.5.0</span></h3>
+                <p data-i18n="jayc-lead">Voice, video and screen sharing for Windows and Android, with servers, rooms and text channels on a server you host.</p>
+            </div>
+        </div>
+
+        <div class="jayc-grid">
+            <div class="showcase reveal" data-slideshow>
+                <div class="slides-viewport">
+                    <button type="button" class="showcase-main" data-zoom aria-label="Enlarge screenshot">
+                        <img class="slide-img" src="assets/jayc/v5-call.webp" alt="Jay-C call on a server: rooms and channels on the left, a screen share and four cameras" width="1600" height="1000" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="slide-arrow slide-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" class="slide-arrow slide-next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                    <span class="slide-count mono" aria-live="polite">1 / 4</span>
+                </div>
+                <div class="thumbs thumbs-4" role="group" aria-label="Jay-C screenshots">
+                    <button type="button" class="thumb" aria-pressed="true" data-src="assets/jayc/v5-call.webp" data-alt="Jay-C call on a server: rooms and channels on the left, a screen share and four cameras">
+                        <img src="assets/jayc/v5-call.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jayc-shot-1">call</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jayc/v5-server-neon.webp" data-alt="Jay-C text channel with an image and a GIF, members on the right, Neon style">
+                        <img src="assets/jayc/v5-server-neon.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jayc-shot-2">channels</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jayc/v5-server-calm.webp" data-alt="The same text channel in the Calm style">
+                        <img src="assets/jayc/v5-server-calm.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jayc-shot-3">calm</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jayc/v5-phone.webp" data-alt="Jay-C on Android: the call and the channels drawer">
+                        <img src="assets/jayc/v5-phone.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jayc-shot-4">android</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="jayc-info reveal">
+                <p data-i18n="jayc-desc1">Jay-C runs on a server that you or a friend host with a single <code>docker compose up</code>. Since 0.5 it works like Discord: saved servers, call rooms (with a password or hidden), text channels with history, and images, GIFs and videos in every chat. No accounts, no ads.</p>
+                <p data-i18n="jayc-desc2">Built with <strong>Tauri v2</strong> (Rust) and <strong>Vanilla JS</strong>, with a <strong>mediasoup</strong> SFU in Node.js: each person uploads once and the server forwards it to up to 16 people. Screen sharing is native Rust (Windows Graphics Capture + GPU H.264), the mic can come from <strong>Jay-A</strong>, and the Android app keeps the call going in the background.</p>
+
+                <h3 class="mono sec-heading"><i class="fa-solid fa-shield-alt" aria-hidden="true"></i> <span data-i18n="jayc-sec-title">security by design</span></h3>
+                <ul class="sec-list" data-i18n="jayc-sec-list">
+                    <li>Media encrypted in transit with WebRTC <strong>DTLS-SRTP</strong></li>
+                    <li><strong>Location stripped</strong> before upload: EXIF, GPS and XMP removed from photos and GPS zeroed in phone videos; the server checks file types from the bytes</li>
+                    <li>Files only for those who can see them: a <strong>media token per connection</strong>, and call files only visible to that call</li>
+                    <li>Room passwords stored with <strong>scrypt + salt</strong>; the admin key is compared in constant time and rate-limited</li>
+                    <li>Signaling with per-connection <strong>token-bucket rate limits</strong>, a 64 KB message cap and an optional origin allowlist</li>
+                    <li>Auto-update only from its GitHub releases, with size and <strong>SHA-256</strong> checked</li>
+                    <li>Open source under the <strong>MIT</strong> license</li>
+                </ul>
+
+                <ul class="chips chips-tech" aria-label="Tech stack">
+                    <li>Tauri v2</li><li>Rust</li><li>JavaScript</li><li>Node.js</li><li>WebRTC</li><li>mediasoup</li><li>Docker</li><li>Android</li><li>C++</li>
+                </ul>
+
+                <div class="link-row">
+                    <a href="https://github.com/TyxMatty/Jay-C" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="jayc-github">Source code</span></a>
+                    <a href="https://github.com/TyxMatty/Jay-C/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="jayc-download">Download for Windows</span></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="product" id="jay-a">
+        <div class="product-head reveal">
+            <span class="product-badge mono" aria-hidden="true">A</span>
+            <div>
+                <h3>Jay-A <span class="product-role mono" data-i18n="jaya-role">audio</span> <span class="product-role product-version mono">v0.3.3</span></h3>
+                <p data-i18n="jaya-lead">A clean voice, a soundboard and audio tools for your calls, without a subscription.</p>
+            </div>
+        </div>
+
+        <div class="jayc-grid">
+            <div class="showcase reveal" data-slideshow>
+                <div class="slides-viewport">
+                    <button type="button" class="showcase-main" data-zoom aria-label="Enlarge screenshot">
+                        <img class="slide-img" src="assets/jay/a-filters-neon.webp" alt="Jay-A filters page with the microphone settings, Neon style" width="1600" height="1000" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="slide-arrow slide-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" class="slide-arrow slide-next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                    <span class="slide-count mono" aria-live="polite">1 / 3</span>
+                </div>
+                <div class="thumbs" role="group" aria-label="Jay-A screenshots">
+                    <button type="button" class="thumb" aria-pressed="true" data-src="assets/jay/a-filters-neon.webp" data-alt="Jay-A filters page with the microphone settings, Neon style">
+                        <img src="assets/jay/a-filters-neon.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaya-shot-1">filters</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/a-chain-v3.webp" data-alt="Jay-A effect chain with the filter open: noise removal, filter, gate, EQ, compressor, de-esser">
+                        <img src="assets/jay/a-chain-v3.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaya-shot-2">effects</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/a-filters-soft.webp" data-alt="Jay-A filters page in the Soft style">
+                        <img src="assets/jay/a-filters-soft.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaya-shot-3">soft</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="jayc-info reveal">
+                <p data-i18n="jaya-desc1">Jay-A lives in the tray and only opens the microphone while something uses it. It cleans your voice in real time with WebRTC's processing and <strong>AI noise removal</strong> (DeepFilterNet or RNNoise), then runs your own effect chain: filter, gate, EQ, compressor, de-esser and limiter, with live meters and presets.</p>
+                <p data-i18n="jaya-desc2">Jay-C takes the filtered mic over the <strong>Jay Link</strong>; if Jay-A stops, Jay-C's own filter takes over at once. Since 0.3 it also has a <strong>soundboard</strong> with global hotkeys that plays into calls, an audio editor, batch conversion (WAV, FLAC, MP3, OGG, Opus) and a virtual-cable bridge for Discord or OBS.</p>
+
+                <h3 class="mono sec-heading"><i class="fa-solid fa-shield-alt" aria-hidden="true"></i> <span data-i18n="jayc-sec-title">security by design</span></h3>
+                <ul class="sec-list" data-i18n="jaya-sec-list">
+                    <li>The Jay Link is a local <strong>named pipe</strong> with no network access at all</li>
+                    <li>The pipe only accepts the <strong>current Windows user</strong>: its DACL grants access to the owner and nobody else</li>
+                    <li>The virtual cable comes from VB-Audio's own setup, with its <strong>signature checked</strong> before it opens</li>
+                    <li>Audio files are treated as <strong>untrusted input</strong>, with size and duration limits</li>
+                    <li>Updates through Jay-H: the installer is checked by <strong>SHA-256</strong> before it runs</li>
+                    <li>Open source under the <strong>MIT</strong> license</li>
+                </ul>
+
+                <ul class="chips chips-tech" aria-label="Tech stack">
+                    <li>Rust</li><li>Tauri v2</li><li>JavaScript</li><li>WebRTC APM</li><li>DeepFilterNet</li><li>RNNoise</li><li>Named pipes</li><li>MMCSS</li>
+                </ul>
+
+                <div class="link-row">
+                    <a href="https://github.com/TyxMatty/Jay-A" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="jayc-github">Source code</span></a>
+                    <a href="https://github.com/TyxMatty/Jay-A/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="jayc-download">Download for Windows</span></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="product" id="jay-e">
+        <div class="product-head reveal">
+            <span class="product-badge mono" aria-hidden="true">E</span>
+            <div>
+                <h3>Jay-E <span class="product-role mono" data-i18n="jaye-role">editor &amp; reader</span> <span class="product-role product-version mono">v0.2.0</span></h3>
+                <p data-i18n="jaye-lead">Read, edit and convert documents, PDFs, images and videos in one small app.</p>
+            </div>
+        </div>
+
+        <div class="jayc-grid">
+            <div class="showcase reveal" data-slideshow>
+                <div class="slides-viewport">
+                    <button type="button" class="showcase-main" data-zoom aria-label="Enlarge screenshot">
+                        <img class="slide-img" src="assets/jay/e-redact.webp" alt="Jay-E PDF editing toolbar with a redacted line on a form" width="1600" height="1000" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="slide-arrow slide-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" class="slide-arrow slide-next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                    <span class="slide-count mono" aria-live="polite">1 / 4</span>
+                </div>
+                <div class="thumbs thumbs-4" role="group" aria-label="Jay-E screenshots">
+                    <button type="button" class="thumb" aria-pressed="true" data-src="assets/jay/e-redact.webp" data-alt="Jay-E PDF editing toolbar with a redacted line on a form">
+                        <img src="assets/jay/e-redact.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaye-shot-1">redaction</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/e-signature.webp" data-alt="A drawn signature placed on a PDF form in Jay-E">
+                        <img src="assets/jay/e-signature.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaye-shot-2">signature</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/e-spelling.webp" data-alt="Jay-E DOCX editor with spelling underlines">
+                        <img src="assets/jay/e-spelling.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaye-shot-3">spelling</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/e-compare.webp" data-alt="Jay-E comparing two versions of a document word by word">
+                        <img src="assets/jay/e-compare.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jaye-shot-4">compare</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="jayc-info reveal">
+                <p data-i18n="jaye-desc1">Jay-E opens PDF, DOCX, ODT, RTF, Markdown, LaTeX, HTML, images and videos, one tab each. It edits a PDF's own text in place, fills in blanks on any PDF, places a drawn signature, compresses and runs OCR; Word and OpenDocument files get find and replace, spelling and a word-by-word compare.</p>
+                <p data-i18n="jaye-desc2">Images get curves, levels, LUTs, perspective, annotations and batch edits (HEIC and RAW included); videos get a timeline with razor cuts copied <strong>without re-encoding</strong>, speed, fades, subtitles and export presets. A batch converter covers it all, from PDF to DOCX to LaTeX to PDF, all in <strong>Rust</strong>.</p>
+
+                <h3 class="mono sec-heading"><i class="fa-solid fa-shield-alt" aria-hidden="true"></i> <span data-i18n="jayc-sec-title">security by design</span></h3>
+                <ul class="sec-list" data-i18n="jaye-sec-list">
+                    <li>Every file is treated as <strong>hostile</strong>: limits on size, pixels, pages, XML depth and decompression (zip bombs)</li>
+                    <li><strong>True redaction</strong>: text and pixels under the box leave the file, and it refuses rather than leave hidden text behind</li>
+                    <li>Everything stays on the device: OCR and spelling use Windows' own engines, and HTML import never downloads anything</li>
+                    <li>HTML from Markdown, DOCX and imports is <strong>sanitized in Rust</strong> (ammonia); the CSP has no <code>unsafe-eval</code> and blocks web images</li>
+                    <li>LaTeX runs in a <strong>separate process</strong> with no shell escape and a time limit</li>
+                    <li>Self-update only from its GitHub releases, with size and <strong>SHA-256</strong> checked</li>
+                    <li>Open source under the <strong>MIT</strong> license</li>
+                </ul>
+
+                <ul class="chips chips-tech" aria-label="Tech stack">
+                    <li>Rust</li><li>Tauri 2</li><li>JavaScript</li><li>hayro</li><li>ammonia</li><li>CodeMirror 6</li><li>Media Foundation</li><li>Windows OCR</li>
+                </ul>
+
+                <div class="link-row">
+                    <a href="https://github.com/TyxMatty/Jay-E" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="jayc-github">Source code</span></a>
+                    <a href="https://github.com/TyxMatty/Jay-E/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="jayc-download">Download for Windows</span></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="product" id="jay-h">
+        <div class="product-head reveal">
+            <span class="product-badge mono" aria-hidden="true">H</span>
+            <div>
+                <h3>Jay-H <span class="product-role mono" data-i18n="jayh-role">hub</span> <span class="product-role product-version mono">v0.1.4</span></h3>
+                <p data-i18n="jayh-lead">Every Jay app in one place, to install, update and open it.</p>
+            </div>
+        </div>
+
+        <div class="jayc-grid">
+            <div class="showcase reveal" data-slideshow>
+                <div class="slides-viewport">
+                    <button type="button" class="showcase-main" data-zoom aria-label="Enlarge screenshot">
+                        <img class="slide-img" src="assets/jay/h-products-neon.webp" alt="Jay-H products page in the Neon style" width="1600" height="1000" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="slide-arrow slide-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" class="slide-arrow slide-next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                    <span class="slide-count mono" aria-live="polite">1 / 3</span>
+                </div>
+                <div class="thumbs" role="group" aria-label="Jay-H screenshots">
+                    <button type="button" class="thumb" aria-pressed="true" data-src="assets/jay/h-products-neon.webp" data-alt="Jay-H products page in the Neon style">
+                        <img src="assets/jay/h-products-neon.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jayh-shot-1">neon</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/h-products-calm.webp" data-alt="Jay-H products page in the Calm style">
+                        <img src="assets/jay/h-products-calm.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jayh-shot-2">calm</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/jay/h-products-soft.webp" data-alt="Jay-H products page in the Soft style">
+                        <img src="assets/jay/h-products-soft.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="jayh-shot-3">soft</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="jayc-info reveal">
+                <p data-i18n="jayh-desc1">Jay-H is the front door of the line. It shows a card per app with the installed version and the latest GitHub release, and installs, updates or opens each one with a click. It updates itself the same way.</p>
+                <p data-i18n="jayh-desc2">Each app ships a <strong>per-user</strong> Windows installer (NSIS, English and Portuguese), so nothing needs admin rights, and a version tag builds the installer in <strong>GitHub Actions</strong>.</p>
+
+                <h3 class="mono sec-heading"><i class="fa-solid fa-shield-alt" aria-hidden="true"></i> <span data-i18n="jayc-sec-title">security by design</span></h3>
+                <ul class="sec-list" data-i18n="jayh-sec-list">
+                    <li>Downloads and runs installers <strong>only from Rust</strong>: the page can neither write files nor start programs</li>
+                    <li>Re-reads the release itself instead of trusting the page, into a fresh temp folder</li>
+                    <li>Runs an installer only from <code>github.com/&lt;product&gt;/releases/download</code>, with size and <strong>SHA-256</strong> matching the release; no digest, no download</li>
+                    <li>Strict <strong>Content Security Policy</strong> in the app</li>
+                    <li>Open source under the <strong>MIT</strong> license</li>
+                </ul>
+
+                <ul class="chips chips-tech" aria-label="Tech stack">
+                    <li>Rust</li><li>Tauri v2</li><li>JavaScript</li><li>GitHub API</li><li>SHA-256</li><li>NSIS</li><li>GitHub Actions</li>
+                </ul>
+
+                <div class="link-row">
+                    <a href="https://github.com/TyxMatty/Jay-H" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="jayc-github">Source code</span></a>
+                    <a href="https://github.com/TyxMatty/Jay-H/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="jayc-download">Download for Windows</span></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- STEAL A CREEPYPASTA -->
+    <section id="creepypasta" class="section container section-horror">
+        <header class="section-head reveal">
+            <p class="section-tag mono" data-i18n="sac-tag">// 03 · game in development</p>
+            <h2>Steal a Creepypasta <span class="subtitle-inline">Sealed Entities</span></h2>
+            <p class="section-lead" data-i18n="sac-lead">A multiplayer survival-theft game on Roblox, set in Creepypasta lore.</p>
+        </header>
+
+        <div class="sac-grid">
+            <div class="sac-info reveal">
+                <p data-i18n="sac-desc">Players sneak into the Hazard Zone to steal cursed eggs, run them home past three patrolling Hunters, unseal the entity at their bunker altar and put it to work earning Essence, while defending their base with traps and raiding everyone else's.</p>
+                <ul class="feature-list" data-i18n="sac-features">
+                    <li>17 entities across 5 rarity tiers, rolled with luck</li>
+                    <li>Boss fights with a live damage ranking</li>
+                    <li>Bunker defense: traps, door hacking and raids</li>
+                    <li>Powers, passes and a collectible index</li>
+                </ul>
+
+                <h3 class="mono sec-heading sec-heading-horror"><i class="fa-solid fa-bug-slash" aria-hidden="true"></i> <span data-i18n="sac-sec-title">anti-exploit</span></h3>
+                <ul class="sec-list sec-list-horror" data-i18n="sac-sec-list">
+                    <li><strong>Server-authoritative</strong>: the client only sends intent</li>
+                    <li>Server-side <strong>movement sanity check</strong> that puts teleporting exploiters back</li>
+                    <li>Remote calls with <strong>payload validation</strong> (types, NaN, ranges) and per-player <strong>rate limits</strong></li>
+                    <li>Thefts checked against server state, never against client-side doors</li>
+                </ul>
+
+                <ul class="chips chips-tech" aria-label="Tech stack">
+                    <li>Luau</li><li>Roblox Studio</li><li>Rojo</li><li>Blender</li><li>Lune</li>
+                </ul>
+                <p class="project-note" data-i18n="sac-note">In development. The source code is private for now.</p>
+            </div>
+
+            <div class="showcase reveal" data-slideshow>
+                <div class="slides-viewport">
+                    <button type="button" class="showcase-main" data-zoom aria-label="Enlarge screenshot">
+                        <img class="slide-img" src="assets/creepypasta/boss.webp" alt="Boss fight against The Gravekeeper with a live damage ranking" width="732" height="299" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="slide-arrow slide-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" class="slide-arrow slide-next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                    <span class="slide-count mono" aria-live="polite">1 / 4</span>
+                </div>
+                <div class="thumbs thumbs-4" role="group" aria-label="Steal a Creepypasta screenshots">
+                    <button type="button" class="thumb" aria-pressed="true" data-src="assets/creepypasta/boss.webp" data-alt="Boss fight against The Gravekeeper with a live damage ranking">
+                        <img src="assets/creepypasta/boss.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="sac-shot-boss">boss</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/creepypasta/entities.webp" data-alt="Entities following the player, including a Mythic void entity">
+                        <img src="assets/creepypasta/entities.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="sac-shot-entities">entities</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/creepypasta/index-ui.webp" data-alt="The in-game Index of collected entities">
+                        <img src="assets/creepypasta/index-ui.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono">index</span>
+                    </button>
+                    <button type="button" class="thumb" aria-pressed="false" data-src="assets/creepypasta/powers.webp" data-alt="Voxel power icons for the Creepypasta entities">
+                        <img src="assets/creepypasta/powers.webp" alt="" width="160" height="100" loading="lazy" decoding="async"><span class="mono" data-i18n="sac-shot-powers">powers</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTHER PROJECTS -->
+    <section id="projects" class="section container">
+        <header class="section-head reveal">
+            <p class="section-tag mono" data-i18n="projects-tag">// 04 · more projects</p>
+            <h2 data-i18n="projects-title">My Projects</h2>
+        </header>
+
+        <div class="projects-container">
+            <article class="project-card card reveal">
+                <div class="project-header">
+                    <img src="valengaconsultoria.png" alt="The logo of Valenga Consulting" class="project-logo" loading="lazy" decoding="async">
+                    <h3 data-i18n="projects-valenga">Valenga Consulting</h3>
+                </div>
+                <div class="project-content">
+                    <p data-i18n="projects-valenga-description1">
+                        My work at <strong>Valenga Consulting</strong> included developing macro solutions for the corporation, made with Lua,
+                        and general I.T solutions, but most importantly, I was tasked with the modernizing and digitalizing of Valenga Consulting, which culminated in:
+                    </p>
+                    <a href="https://valengaconsulting.xyz" target="_blank" rel="noopener noreferrer" class="project-link mono"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> valengaconsulting.xyz</a>
+                    <p data-i18n="projects-valenga-description2">
+                        <strong>Valenga Consulting's</strong> digital presence was a huge step for its growth. The website
+                        is a project which took me over 3 months to complete, but was a huge starting step for my career in Web Development, mastering
+                        <strong>Python</strong> and <strong>TypeScript</strong> as backend languages.
+                    </p>
+                    <p data-i18n="projects-valenga-description3">
+                        The modernizing of <strong>Valenga Consulting</strong> was a swift process due to the proper application of the AGILE method, ending in a boom in sales.
+                    </p>
+                    <p class="project-note" data-i18n="projects-valenga-note">Note: Valenga Consulting is currently going through a digital transformation and rebrading, with updates to be posted soon, therefore, the information on this page may not be up-to-date.</p>
+                </div>
+            </article>
+
+            <article class="project-card card reveal">
+                <div class="project-header">
+                    <img src="logo.png" alt="The PRIINT project logo" class="project-logo" loading="lazy" decoding="async">
+                    <h3><span data-i18n="projects-priint-title">The PRIINT Project</span> <small>(Projeto de Integração Internacional Tecnológica)</small></h3>
+                </div>
+                <div class="project-content">
+                    <p data-i18n="projects-priint-description1">
+                        The <strong>PRIINT Project</strong> (Projeto de Integração Internacional Tecnológica) is an initiative I developed alongside my partner, in collaboration with the <strong>State University of Ponta Grossa (UEPG)</strong>.
+                        Our core mission is to integrate all kinds of people into the learning process, with a strong focus on accessibility for people with disabilities.
+                    </p>
+                    <p data-i18n="projects-priint-description2">
+                        Designed for educational institutions, the software utilizes AI to provide personalized learning experiences, adapting to each student's unique needs and preferences.
+                        Built with <strong>Python</strong> and <strong>TypeScript</strong>, and integrating LLMs like <strong>Gemini</strong> and <strong>ChatGPT</strong>, PRIINT aims to aid students from all over the world in their educational journey.
+                    </p>
+                    <p class="project-note" data-i18n="projects-priint-note">Note: The PRIINT project is currently in development. Documentation is being updated on our GitHub repository, with official updates to be posted at <a href="https://thepriintproject.com.br/" target="_blank" rel="noopener noreferrer" class="project-link">https://thepriintproject.com.br</a>.</p>
+                    <a href="https://github.com/TyxMatty/The-PRIINT-Project" target="_blank" rel="noopener noreferrer" class="project-link mono"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="link-docs">View Documentation</span></a>
+                </div>
+            </article>
+
+            <article class="project-card card reveal">
+                <div class="project-header">
+                    <img src="Roblox_StudioLOGO.png" alt="Roblox Studio logo" class="project-logo" loading="lazy" decoding="async">
+                    <h3 data-i18n="projects-roblox-title">Roblox Game Development</h3>
+                </div>
+                <div class="project-content">
+                    <p data-i18n="projects-roblox-description1">
+                        Since 2019, I've been developing games on the <strong>Roblox</strong> platform, utilizing <strong>Lua</strong> and <strong>Luau</strong>. What started as a passion for creating immersive experiences evolved into a deep dive into Software Engineering.
+                    </p>
+                    <p data-i18n="projects-roblox-description2">
+                        Working within Roblox Studio allowed me to master core backend concepts like <strong>Client-Server architecture</strong>, network optimization, and Object-Oriented Programming. This solid foundation in game logic made my transition into systems programming (<strong>C</strong> and <strong>C++</strong>) and Full Stack Web Development (<strong>Python</strong>, <strong>TypeScript</strong>, and <strong>C#</strong>) natural and intuitive.
+                    </p>
+                    <button type="button" class="shot" data-zoom><img src="image.png" alt="Screenshot of a Roblox game developed by Matty" class="project-screenshot" loading="lazy" decoding="async"></button>
+                    <a href="https://github.com/TyxMatty/roblox-scripts" target="_blank" rel="noopener noreferrer" class="project-link mono"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="link-scripts">View Core Scripts</span></a>
+                </div>
+            </article>
+
+            <article class="project-card card reveal">
+                <div class="project-header">
+                    <img src="UEPGlogo.png" alt="UEPG logo" class="project-logo" loading="lazy" decoding="async">
+                    <h3 data-i18n="projects-paws-title">Paws and Paths - Narrative Game (UEPG)</h3>
+                </div>
+                <div class="project-content">
+                    <p data-i18n="projects-paws-description1">
+                        I led the development of <strong>Entre Patas e Caminhos (Paws and Paths)</strong>, a narrative awareness game created at the State University of Ponta Grossa (UEPG). The project intersects animal welfare with the protagonist's mental health recovery.
+                    </p>
+                    <p data-i18n="projects-paws-description2">
+                        In this project, which is in development, I was responsible for the complete <strong>Requirements Engineering</strong> (functional and non-functional), software architecture modeling via <strong>UML</strong>, flowchart creation, and the structuring of complex branching logic for the game's dialogue trees.
+                    </p>
+                    <a href="https://github.com/TyxMatty/EPEC" target="_blank" rel="noopener noreferrer" class="project-link mono"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="link-docs">View Documentation</span></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container">
+        <header class="section-head reveal">
+            <p class="section-tag mono" data-i18n="contact-tag">// 05 · contact</p>
+            <h2 data-i18n="contact-title">Contact Me!</h2>
+            <p class="section-lead" data-i18n="contact-lead">Got an opportunity, a project idea or a bug to report? Send a message and it lands straight in my inbox.</p>
+        </header>
+
+        <form id="contact-form" class="contact-form card reveal" novalidate>
+            <p class="form-head mono" aria-hidden="true">$ ./send_message.sh</p>
+            <div class="field-row">
+                <div class="field">
+                    <label for="name" data-i18n="contact-name">Name:</label>
+                    <input type="text" id="name" name="name" maxlength="80" autocomplete="name" required>
+                </div>
+                <div class="field">
+                    <label for="email" data-i18n="contact-email">Email:</label>
+                    <input type="email" id="email" name="email" maxlength="120" autocomplete="email" required>
+                </div>
+            </div>
+            <div class="field">
+                <label for="title" data-i18n="contact-subject">Subject:</label>
+                <input type="text" id="title" name="title" maxlength="120" required>
+            </div>
+            <div class="field">
+                <label for="message" data-i18n="contact-message">Message:</label>
+                <textarea id="message" name="message" maxlength="2000" required></textarea>
+            </div>
+            <!-- Honeypot: humans never see or fill this field; bots that do are dropped. -->
+            <div class="hp" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary" data-i18n="contact-submit">Send Message</button>
+            <p id="form-status" class="form-status mono" role="status"></p>
+        </form>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p data-i18n="footer-text">&copy; 2026 Mateus Valenga - "Matty". All rights reserved.</p>
+        <p class="mono footer-sec" data-i18n="footer-sec">CSP · SRI · no trackers · no cookies</p>
+    </div>
+</footer>
+
+<dialog id="lightbox" class="lightbox" aria-label="Image viewer">
+    <button type="button" class="icon-btn lightbox-close" id="lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <button type="button" class="slide-arrow slide-prev" id="lightbox-prev" aria-label="Previous image" hidden><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+    <button type="button" class="slide-arrow slide-next" id="lightbox-next" aria-label="Next image" hidden><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+    <img id="lightbox-img" src="data:," alt="">
+    <p id="lightbox-caption" class="mono"></p>
+</dialog>
+</body>
+</html>
